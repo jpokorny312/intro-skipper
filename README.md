@@ -1,16 +1,19 @@
-# Intro Skipper
+# Intro Skipper (jpokorny312 Fork)
 
 <div align="center">
     <p>
-        <img alt="Plugin Banner" src="https://raw.githubusercontent.com/intro-skipper/intro-skipper/12.0/images/logo.png" />
+        <img alt="Plugin Banner" src="https://raw.githubusercontent.com/jpokorny312/intro-skipper/12.0/images/logo.png" />
     </p>
     <p>
         Analyzes the audio of television episodes to detect and skip over intros.
     </p>
+    <p>
+        Fork of <a href="https://github.com/intro-skipper/intro-skipper">intro-skipper/intro-skipper</a> with stricter recap detection.
+    </p>
 
-[![CodeQL](https://github.com/intro-skipper/intro-skipper/actions/workflows/codeql.yml/badge.svg)](https://github.com/intro-skipper/intro-skipper/actions/workflows/codeql.yml)
-<a href="https://github.com/intro-skipper/intro-skipper/releases">
-<img alt="Total GitHub Downloads" src="https://img.shields.io/github/downloads/intro-skipper/intro-skipper/total?label=github%20downloads"/>
+[![CodeQL](https://github.com/jpokorny312/intro-skipper/actions/workflows/codeql.yml/badge.svg)](https://github.com/jpokorny312/intro-skipper/actions/workflows/codeql.yml)
+<a href="https://github.com/jpokorny312/intro-skipper/releases">
+<img alt="Total GitHub Downloads" src="https://img.shields.io/github/downloads/jpokorny312/intro-skipper/total?label=github%20downloads"/>
 </a>
 <br />
 <p align="center">
@@ -39,11 +42,9 @@ Manuell geht es auch: `IntroSkipper.dll` aus dem Release-ZIP in den Plugin-Ordne
 > * Reload the plugin page without cache (`CTRL + F5` for Windows/Linux or `SHIFT + CMD + R` for macOS)
 
 ```
-https://intro-skipper.org/manifest.json
+https://raw.githubusercontent.com/jpokorny312/intro-skipper/12.0/manifest.json
 ```
-**Important: This URL returns a manifest based on the Jellyfin version used to access it.
-<br />
-It will NOT return a manifest when viewed in a browser, as no Jellyfin version is provided.**
+This fork's manifest is a static file that the *Release Fork Plugin* workflow updates on every release. It lists the versions built from this repository (see the German installation section above). The original plugin's manifest is `https://intro-skipper.org/manifest.json`; do not add both repositories, they share one plugin ID.
 
 ### As of Jellyfin 10.10, Intro Skipper does **NOT** modify the UI.
 
@@ -79,7 +80,7 @@ Some web UI features (for example, adjusting the skip-button timeout) require th
 
 ## Disclaimer
 
-This plugin is licensed under the [GNU General Public License v3.0](https://github.com/intro-skipper/intro-skipper/blob/12.0/LICENSE).
+This plugin is licensed under the [GNU General Public License v3.0](https://github.com/jpokorny312/intro-skipper/blob/12.0/LICENSE).
 It is provided as-is, without warranty of any kind, express or implied. Use it at your own
 risk. The authors accept no liability for data loss, missed detections,
 false positives, or any other damages arising from its use.
