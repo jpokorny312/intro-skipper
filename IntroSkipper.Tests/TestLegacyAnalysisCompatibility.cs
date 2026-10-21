@@ -24,6 +24,14 @@ using Xunit;
 
 public sealed class TestLegacyAnalysisCompatibility
 {
+    // The pinned hashes come from the published releases, whose default recap chapter pattern
+    // was broader than today's.
+    private const string ReleaseRecapChapterPattern =
+        @"(^|\s)(Re?cap|Sum{1,2}ary|Prev(ious(ly)?)?|(Last|Earlier)(\s\w+)?|Catch[ -]up)(?![\s:]+End)(\s|:|$)";
+
+    private static PluginConfiguration ReleaseDefaults()
+        => new() { ChapterAnalyzerRecapPattern = ReleaseRecapChapterPattern };
+
     [Theory]
     [InlineData(AnalysisMode.Introduction, false, false, "D65089C5988650A1")]
     [InlineData(AnalysisMode.Introduction, true, false, "8DBCDDC0D7121940")]
@@ -35,7 +43,7 @@ public sealed class TestLegacyAnalysisCompatibility
     [InlineData(AnalysisMode.Recap, true, false, "3E22D6A17CDA5178")]
     public void LegacyHashes_MatchOriginal1011Hasher(AnalysisMode mode, bool available, bool alternative, string expected)
     {
-        Assert.Equal(expected, LegacyAnalysisCompatibility.AnalysisHash(new PluginConfiguration(), mode, AnalyzerAction.Default, available, alternative));
+        Assert.Equal(expected, LegacyAnalysisCompatibility.AnalysisHash(ReleaseDefaults(), mode, AnalyzerAction.Default, available, alternative));
     }
 
     /// <summary>
@@ -69,7 +77,7 @@ public sealed class TestLegacyAnalysisCompatibility
     [InlineData(23, AnalysisMode.Commercial, true, false, "E795D9EA95F28728")]
     public void OlderHashes_MatchPublishedReleaseHashers(int release, AnalysisMode mode, bool available, bool alternative, string expected)
     {
-        Assert.Equal(expected, LegacyAnalysisCompatibility.AnalysisHash(new PluginConfiguration(), mode, AnalyzerAction.Default, available, alternative, release));
+        Assert.Equal(expected, LegacyAnalysisCompatibility.AnalysisHash(ReleaseDefaults(), mode, AnalyzerAction.Default, available, alternative, release));
     }
 
     /// <summary>
